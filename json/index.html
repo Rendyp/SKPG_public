@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="myCtrl">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="underscore-min.js"></script>
+<body>
+{{loading}}
+<input type="text" ng-model="file" />
+<button type="button" ng-click="ambil()">Ambil</button>
+<button type="button" ng-click="save()">Save</button>
+<pre>{{myWelcome}}</pre>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $scope.ambil = function(){
+    $scope.loading="loading...."
+    $http.get($scope.file+".json")
+  .then(function(response) {
+      //response.data.features.map(item =>{
+        // var kabupaten = _.find($scope.kabupaten, function(r){ return r.id_prov == item.properties.PROVNO && item.properties.KABKOT.toLowerCase().search(r.nama.toLowerCase()) != -1; });
+        //item.properties.ID = "";
+        // if(kabupaten != undefined){
+        //   item.properties.ID = kabupaten.id_kab;
+        // }
+        //delete item.properties.PROVNO;
+        //delete item.properties.PROVINSI;
+        //delete item.properties.KABKOTNO;
+      //});
+      $scope.myWelcome = response.data;
+    $scope.loading=""
+  });
+  }
+  $http.get("kabupaten.json")
+  .then(function(response) {
+      $scope.kabupaten = response.data;
+  });
+  $scope.save = function(){
+    $scope.loading="loading...."
+    $http.post($scope.file,$scope.myWelcome).then(()=>{
+    $scope.loading=""
+});
+  }
+});
+</script>
+
+</body>
+</html>

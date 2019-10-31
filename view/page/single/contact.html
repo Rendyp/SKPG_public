@@ -1,0 +1,88 @@
+  <!-- Page Heading -->
+  <div class="impx-page-heading position-relative">
+      <img src="images/contact-us.jpg" class="img-fluid img-container" style="height: 213.88" alt="About">
+      <div class="page-title right p-lg-3 px-sm-3 py-sm-2 px-2 pt-1 rounded-left">
+          <h4 class="text-white mb-lg-2 mb-sm-0">Kontak Kami</h4>
+          <!-- <p class="mb-lg-0 mb-sm-2 d-lg-inline-block d-sm-none d-none">Jika ada hal yang ingin ditanyakan bisa langsung mengisi form dibawah.</p> -->
+      </div>
+  </div>
+  <!-- Page Heading End -->
+
+  <!-- Content -->
+  <div class="impx-content p-lg-4 m-lg-2 p-3 m-2">
+      <div class="row">
+
+          <!-- Content 1 -->
+          <div class="col-lg-6 mb-lg-0 mb-4">
+              <!-- Intro -->
+              <h4 class="mb-lg-3">Kontak Kami</h4>
+              <p>Terima kasih telah menggunakan layanan kami. Bila ada pertanyaan yang ingin ditanyakan kami
+                  telah menyediakan layanan email. Silahkan isi email dibawah ini dan kami akan tindak lanjuti
+                  segera. </p>
+              <!-- Intro End -->
+              <!-- Contact Form -->
+              <div class="mail-status"></div>
+              <form id="impx-contact-form" ng-submit="send()">
+                  <div class="form-group position-relative">
+                      <label for="contact-name">Nama</label>
+                      <input type="text" class="form-control contact-input" id="contact-name" ng-model="form.Name" name="contact-name" required
+                          placeholder="">
+                      <span id="contact-name-info" class="contact-require"></span>
+                  </div>
+                  <div class="form-group position-relative">
+                      <label for="contact-subject">Subyek</label>
+                      <input type="text" class="form-control contact-input" id="contact-subject" ng-model="form.Subject" name="contact-subject" required
+                          placeholder="">
+                      <span id="contact-subject-info" class="contact-require"></span>
+                  </div>
+                  <div class="form-group position-relative">
+                      <label for="contact-email">Email</label>
+                      <input type="text" class="form-control contact-input" id="contact-email" ng-model="form.Email" name="contact-email" required
+                          placeholder="">
+                      <span id="contact-email-info" class="contact-require"></span>
+                  </div>
+                  <div class="form-group position-relative">
+                      <label for="contact-message">Pesan</label>
+                      <textarea class="form-control contact-input" id="contact-message" ng-model="form.Message" name="contact-message" required
+                          rows="6"></textarea>
+                      <span id="contact-message-info" class="contact-require"></span>
+                  </div>
+                  <button type="submit" class="btn btn-secondary btn-sm float-right mr-lg-2"
+                      id="buttonsend">Kirim</button>
+                  <span class="loading" style="display: none;">Mohon Tunggu..</span>
+              </form>
+              <!-- Contact Form End -->
+
+          </div>
+          <!-- Content 1 End -->
+
+          <!-- Content 2 -->
+          <div class="col-lg-6">
+
+              <!-- <h4 class="mb-lg-3 mb-3">Contact Information</h4>
+                            <p>similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p> -->
+              <div class="embed-responsive embed-responsive-4by3 mb-lg-3 mb-4">
+                  <!-- Google Map -->
+                  <iframe class="embed-responsive-item"
+                      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3965.7529867602375!2d106.824177!3d-6.296157!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x908a78125b3a79d8!2sFood+Security+Agency%2C+Ministry+of+Agriculture!5e0!3m2!1sen!2sid!4v1565540394772!5m2!1sen!2sid"
+                      width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+              </div>
+              <ul class="list-unstyled">
+                  <!-- Contact Detail -->
+                  <li class="border-bottom mb-lg-2 pb-lg-2 mb-2 pb-2"><i class="fa fa-home fa-lg mr-lg-2"></i>
+                      Jalan Harsono RM No. 3, Ragunan, Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota
+                      Jakarta 12550.</li>
+                  <li class="border-bottom mb-lg-2 pb-lg-2 mb-2 pb-2"><i class="fa fa-phone fa-lg mr-lg-2"></i> (021)
+                      7802619 / 7807377</li>
+                  <li class="border-bottom mb-lg-2 pb-lg-2 mb-2 pb-2"><i class="fa fa-fax fa-lg mr-lg-2"></i>(021)
+                      7807377</li>
+                  <li class="border-bottom mb-lg-2 pb-lg-2 mb-2 pb-2"><i
+                          class="fa fa-envelope fa-lg mr-lg-2 mr-lg-2"></i> <a href="mailto:#">bkp@pertanian.go.id</a>
+                  </li>
+              </ul>
+          </div>
+          <!-- Content 2 End -->
+
+      </div>
+  </div>
+  <!-- Content End -->

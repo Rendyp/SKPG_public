@@ -1,0 +1,397 @@
+/* --------------------------------------------------------------------------
+ * File        : mediaquery.css
+ * Version     : 1.0
+ * Author      : IMediapixel
+ * Author URI  : https://themeforest.net/user/imediapixel/portfolio
+ *
+ * Indonez Copyright 2019 All Rights Reserved.
+ * -------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------
+   
+   [Table of contents]
+   1. mobile portrait
+   2. mobile landscape
+   3. tablet portrait
+   4. tablet landscape
+
+------------------------------------------------------------------ */
+
+/* [ 1. mobile portrait ] */
+
+@media only screen and (max-width: 479px) {
+    .impx-container {
+        margin-top: 15px;
+    }
+    .impx-container:after {
+        bottom: -18px;
+    }
+    .impx-header {
+        height: 90px;
+    }
+    .impx-logo img {
+        max-width: 75%;
+    }
+    .impx-nav {
+        float: none;
+        margin-top: 20px;
+    }
+    .impx-nav .navbar {
+        padding: 0;
+        z-index: 3;
+    }
+    .impx-nav .navbar.bg-white {
+        background-color: rgba(255, 255, 255, 1.0) !important;
+    }
+    .impx-nav .navbar-toggler {
+        position: absolute;
+        top: -65px;
+        right: 5px;
+        padding: 0.15rem 0.45rem;
+        font-size: 1.05rem;
+    }
+    .impx-nav .dropdown-menu .dropdown-item {
+        padding-left: 2rem;
+    }
+    .impx-nav .navbar-nav .nav-link {
+        font-weight: 300;
+        color: #4f4f4f;
+        padding: 0.3rem 1.5rem;
+        background-image: linear-gradient(to bottom, #ffffff, #ffffff, #fcfcfc, #fafafa, #f8f8f8);
+        border-bottom: 1px solid rgb(255, 255, 255, 1);
+        border-top: 1px solid rgb(0, 0, 0, 0.03);
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 300;
+    }
+    .impx-slider .owl-carousel .owl-nav button.owl-next, .impx-slider .owl-carousel .owl-nav button.owl-prev {
+        top: 10%
+    }
+    .slide-caption h2 {
+        font-size: 1.4rem;
+    }
+    .feature-items .feature-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-right: 10px;
+    }
+    .feature-items .feature-item:after {
+        background-color: rgba(255, 255, 255, 0.0);
+    }
+    .feature-items div:last-child .feature-item {
+        border: none;
+    }
+    .feature-items .feature-item i {
+        display: flex;
+        justify-content: center;
+    }
+    .page-title {
+        bottom: 10px;
+        max-width: 80%;
+    }
+    .page-title h4 {
+        font-size: 1.1rem;
+    }
+    .impx-pricing-item .card-body h1 span.currency, .impx-pricing-item .card-body h2 span.currency {
+        right: 73%;
+    }
+    .impx-pricing-item .featured .card-body h1 span.currency, .impx-pricing-item .featured .card-body h2 span.currency {
+        right: 75%;
+    }
+    .impx-testi-text blockquote {
+        padding-top: 40px;
+        padding-right: 30px;
+    }
+    .impx-testi-image {
+        top: -40px;
+        right: -95px;
+        z-index: 2;
+    }
+    #pf-filter.list-group-horizontal {
+        flex-direction: column;
+    }
+    .footer-widget {
+        margin-bottom: 30px;
+    }
+    .footer-nav {
+        display: block;
+        text-align: center;
+    }
+    .site-copyright {
+        text-align: center;
+    }
+}
+
+/* [ 2. mobile landscape ] */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .impx-container {
+        margin-top: 15px;
+    }
+    .impx-container:after {
+        bottom: -21px;
+    }
+    .impx-header {
+        height: 90px;
+    }
+    .impx-nav {
+        float: none;
+        margin-top: 20px;
+    }
+    .impx-nav .navbar {
+        padding: 0;
+        z-index: 3;
+    }
+    .impx-nav .navbar.bg-white {
+        background-color: rgba(255, 255, 255, 1.0) !important;
+    }
+    .impx-nav .navbar-toggler {
+        position: absolute;
+        top: -60px;
+        right: 10px;
+        padding: 0.15rem 0.45rem;
+        font-size: 1.05rem;
+    }
+    .impx-nav .dropdown-menu .dropdown-item {
+        padding-left: 2rem;
+    }
+    .impx-nav .navbar-nav .nav-link {
+        font-weight: 300;
+        color: #4f4f4f;
+        padding: 0.3rem 1.5rem;
+        background-image: linear-gradient(to bottom, #ffffff, #ffffff, #fcfcfc, #fafafa, #f8f8f8);
+        border-bottom: 1px solid rgb(255, 255, 255, 1);
+        border-top: 1px solid rgb(0, 0, 0, 0.03);
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 300;
+    }
+    .feature-items .feature-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    .feature-items .feature-item:after {
+        background-color: rgba(255, 255, 255, 0.0);
+    }
+    .feature-items .intro p, .feature-item p {
+        font-size: 100%;
+    }
+    .slide-img img {
+        max-width: 70%;
+    }
+    .page-title {
+        bottom: 50px;
+    }
+    .page-title h4 {
+        font-size: 1.3rem;
+    }
+    .impx-pricing-item .card-body h2 span.currency {
+        right: 75%;
+    }
+    .impx-pricing-item .featured .card-body h2 span.currency {
+        right: 78%;
+    }
+    .footer-widget {
+        margin-bottom: 30px;
+    }
+    .footer-nav {
+        display: block;
+        text-align: center;
+    }
+    .site-copyright {
+        text-align: center;
+    }
+}
+
+/* [ 3. tablet potrait ] */
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    .impx-container:after {
+        bottom: -21px;
+    }
+    .impx-header {
+        height: 90px;
+    }
+    .impx-nav {
+        float: none;
+        margin-top: 20px;
+    }
+    .impx-nav .navbar {
+        padding: 0;
+        z-index: 3;
+    }
+    .impx-nav .navbar.bg-white {
+        background-color: rgba(255, 255, 255, 1.0) !important;
+    }
+    .impx-nav .navbar-toggler {
+        position: absolute;
+        top: -60px;
+        right: 10px;
+        padding: 0.15rem 0.45rem;
+        font-size: 1.05rem;
+    }
+    .impx-nav .dropdown-menu .dropdown-item {
+        padding-left: 2rem;
+    }
+    .impx-nav .navbar-nav .nav-link {
+        font-weight: 300;
+        color: #4f4f4f;
+        padding: 0.3rem 1.5rem;
+        background-image: linear-gradient(to bottom, #ffffff, #ffffff, #fcfcfc, #fafafa, #f8f8f8);
+        border-bottom: 1px solid rgb(255, 255, 255, 1);
+        border-top: 1px solid rgb(0, 0, 0, 0.03);
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 300;
+    }
+    .slide-img img {
+        max-width: 60%;
+    }
+    .feature-items .feature-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .feature-items .feature-item:after {
+        background-color: rgba(255, 255, 255, 0.0);
+    }
+    .feature-items .intro p, .feature-item p {
+        font-size: 100%
+    }
+    .page-title {
+        bottom: 70px;
+    }
+    .page-title p {
+        font-size: .85rem;
+        line-height: 1.4;
+    }
+    .footer-widget {}
+    .footer-nav {
+        display: block;
+        text-align: center;
+    }
+    .site-copyright {
+        text-align: center;
+    }
+}
+
+/* [ 4. tablet landscape ] */
+
+@media only screen and (max-width:1024px) {
+    .impx-container:after {
+        bottom: -22px;
+    }
+}
+
+.container {
+    max-width: 80% !important;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 98%;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 96%;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 1080px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1080px;
+    }
+}
+
+.navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+/* Custom Columns Width */
+
+.col-lg-1-5, .col-lg-2-5, .col-lg-3-5, .col-lg-4-5, .col-lg-5-5, .col-lg-6-5, .col-lg-7-5, .col-lg-8-5, .col-lg-9-5, .col-lg-10-5, .col-lg-11-5 {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+@media (min-width: 992px) {
+    .col-lg-1-5 {
+        width: 12.5%;
+    }
+    .col-lg-2-5 {
+        width: 20.83333%;
+    }
+    .col-lg-3-5 {
+        width: 29.16667%;
+    }
+    .col-lg-4-5 {
+        width: 37.5%;
+    }
+    .col-lg-5-5 {
+        width: 45.83333%;
+    }
+    .col-lg-6-5 {
+        width: 54.16667%;
+    }
+    .col-lg-7-5 {
+        width: 62.5%;
+    }
+    .col-lg-8-5 {
+        width: 70.83333%;
+    }
+    .col-lg-9-5 {
+        width: 79.16667%;
+    }
+    .col-lg-10-5 {
+        width: 87.5%;
+    }
+    .col-lg-11-5 {
+        width: 95.8333%;
+    }
+}
+
+.img-container {
+    width: 100%;
+    height: 213.88px !important;
+}
+
+.pagination li {
+    position: relative;
+    /* display: block; */
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 2.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    color: #6c757d;
+    cursor: pointer;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+.pagination li {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    
+}
+
+.pagination li.active {
+    border-color: #4CAF50;
+    border-width: 1px;
+    z-index: 999;
+}
+
+.pagination li:hover:not(.active) {
+    background-color: #ddd;
+}

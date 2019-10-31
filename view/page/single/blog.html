@@ -1,0 +1,99 @@
+<!-- Page Heading -->
+<div class="impx-page-heading position-relative">
+    <img src="images/informasi.jpg" class="img-fluid img-container" alt="About">
+    <div class="page-title p-lg-3 px-sm-3 py-sm-2 px-2 pt-1 rounded-right">
+        <h4 class="text-white mb-lg-2 mb-sm-0">Informasi</h4>
+        <!-- <p class="mb-lg-0 mb-sm-2 d-lg-inline-block d-sm-none d-none">Informasi dan berita terkini seputar
+                        NBM</p> -->
+    </div>
+</div>
+<!-- Page Heading End -->
+
+<!-- Content -->
+<div class="impx-content p-lg-4 m-lg-2 p-3 m-2">
+    <div class="row">
+
+        <!-- Content Main -->
+        <div class="col-lg-8-5 mb-sm-3 mb-3">
+            <!-- Article 1 -->
+            <article ng-show="form.length == 0" style="text-align: center;margin-bottom: 30px">
+                Tidak ada data
+            </article>
+            <article class="impx-article mb-lg-3 mb-sm-3 mb-3" ng-repeat="f in filteredTodos">
+                <div class="row no-gutters">
+                    <div class="col-lg-2">
+                        <img src="{{ 'http://153.92.4.174/nbm/assets/information/'+ f.Image}}" alt=""
+                            class="img-fluid boxed-img img-thumbnail p-lg-2 p-2 mt-lg-1 mb-2">
+                    </div>
+                    <div class="col-lg-10 pl-lg-4">
+                        <h4 class="article-title"><a class="link-reset"
+                                ui-sref="app.blogDetail({id:f.Id})">{{f.Title}}</a></h4>
+                        <p>{{f.Summary}}</p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p class="article-meta py-1">Ditulis oleh <a href="#">Admin</a> pada {{f.CreatedDate}}.
+                            <a class="uk-button uk-button-text" ui-sref="app.blogDetail({id:f.Id})">{{f.TotalComment}}
+                                Komentar</a></p>
+                    </div>
+                </div>
+            </article><!-- Article 1 End -->
+
+            <!-- Article Pagination -->
+            <nav aria-label="blog-paging" ng-show="form.length !== 0">
+                <ul class="pagination justify-content-center">
+                    <pagination boundary-links="true" max-size="3" items-per-page="itemsPerPage"
+                        total-items="form.length" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+                </ul>
+            </nav>
+            <!-- Article Pagination End -->
+        </div>
+        <!-- Content Main End -->
+
+        <!-- Sidebar -->
+        <div class="col-lg-3-5">
+            <aside class="impx-sidebar">
+                <!-- Latest News Widget -->
+                <div class="impx-widget spacing  p-lg-4 p-3 mb-lg-4 impx-padding-medium-vertical">
+                    <h5 class="mb-lg-4 mb-4">Search</h5>
+                    <div class="input-group">
+                        <input class="form-control py-2 border-right-0 border" type="search" placeholder="search"
+                            id="example-search-input">
+                        <span class="input-group-append">
+                            <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <!-- Latest News Widget End -->
+
+                <!-- Categories Widget -->
+                <!-- <div class="impx-widget spacing  p-lg-4 p-3 mb-lg-4 impx-padding-medium-vertical">
+                                <h5 class="mb-lg-4 mb-4">Categories</h5>
+                                <ul class="sidebar-nav">
+                                    <li><a href="#">Company Profile</a></li>
+                                    <li><a href="#">Our History</a></li>
+                                    <li><a href="#">Vision &amp; Mission</a></li>
+                                    <li><a href="#">Our Team</a></li>
+                                </ul>
+                            </div> -->
+                <!-- Categories Widget End -->
+
+                <!-- Tags Widget -->
+                <div class="impx-widget tags-widget p-lg-4 p-3 mb-lg-4 impx-padding-medium-vertical">
+                    <h5 class="mb-lg-4 mb-4">Category</h5>
+                    <ul>
+                        <li ng-repeat="l in listTags"><a href="">{{l.Name}}</a></li>
+
+
+                    </ul>
+                </div>
+                <!-- Tags Widget End -->
+
+            </aside>
+        </div>
+        <!-- Sidebar End -->
+
+    </div>
+</div>
+<!-- Content End -->

@@ -1,0 +1,77 @@
+
+<header class="impx-header p-lg-4 p-3">
+    <div class="row">
+        <div class="col-lg-2 col-6">
+            <a ui-sref="app.index"><img src="images/skpg.png" style="    width: 216px; margin-top: -76px;" alt="Logo" /></a>
+            <span></span>
+        </div>
+        <div class=" col-lg-8 col-12 " style="margin-top:10px">
+            
+            <div class="input-group">
+                <input class="form-control py-2 border-right-0 border" ng-model="country.nama"
+                    ng-keyup="complete(country.nama)"
+                    type="text" placeholder="Search" id="example-search-input">
+                <span class="input-group-append">
+                    <button ng-if="filterCountry==null" style="background:#dad9d7;cursor:default"
+                        class="btn btn-outline-secondary border-left-0 border" type="button">
+                        <i class="fa fa-search" style="color:white"></i>
+                    </button>
+                     <button ng-if="filterCountry!=null" ng-click="closeSearch()"
+                         class="btn btn-outline-secondary border-left-0 border" type="button">
+                         <i class="fa fa-close" style="color:white"></i>
+                     </button>
+                </span>
+            </div>
+            <ul class="list-group dropdown-autocomplete" ng-class="{'dropdown-autocomplete-hide':filterCountry==null}">
+                <li class="list-group-item" style="cursor: pointer; color:black" ng-repeat="countrydata in filterCountry | orderBy:'nama'" ng-click="searchBox(countrydata)">
+                    {{countrydata.nama}}</li>
+            </ul>
+            <ul class="list-group dropdown-autocomplete" style="padding:0 53px 0 20px!important;color:black" ng-if="showNoResult">
+                <li class="list-group-item">Data No Found</li>
+            </ul>
+        </div>
+        <div class="col-lg-2 col-6" style="z-index:9999; margin-top: 5px">
+            <button class="nav-link btn btn-outline-secondary border"
+            style="color:white;float:right "
+            href="/"> Login</button>
+            
+        </div>
+    </div>
+</header>
+
+<!-- Fun Facts End -->
+<!-- Slideshow -->
+<div id="slider1" class="impx-slider">
+    <div id="mapid">
+        <div id="preloader" ng-if="loadingMap">
+            <img src="images/spinner.gif" />
+            <!-- sasasa -->
+        </div>
+        <!-- <button ng-click="getData('provinsi')" title="Refresh Map"
+              class="btn btn-reload-map btn-outline-secondary border-left-0 border" type="button">
+              <i class="fa fa-refresh" style="color:black"></i>
+          </button> -->
+
+        <div class="btn-map-atas">
+
+            <button ng-click="getData('provinsi')" title="Data Provinsi"
+                class="btn  btn-outline-secondary border-left-0 border" ng-class="{ 'btn-data-not-active': !isDataProvinsi, 'btn-data' : isDataProvinsi }" type="button">
+                Data Provinsi
+            </button>
+            <button ng-click="getData('kabupaten')" title="Data Provinsi" 
+                class="btn btn-outline-secondary border-left-0 border" ng-class="{ 'btn-data-not-active': !isDataKabupaten, 'btn-data' : isDataKabupaten }" type="button">
+                Data Kabupaten
+            </button>
+            <!-- <button ng-click="getData('kecamatan')" title="Kecamatan"
+              class="btn btn-data-nasional btn-outline-secondary border-left-0 border" type="button">
+              Data Kecamatan
+          </button> -->
+        </div>
+    </div>
+</div>
+<!-- Slideshow End -->
+<style>
+    body {
+        overflow-y: hidden;
+    }
+</style>

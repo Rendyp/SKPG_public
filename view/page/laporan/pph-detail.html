@@ -1,0 +1,88 @@
+    <!-- Page Heading -->
+    <div class="impx-page-heading position-relative">
+        <img src="images/laporan-nbm-bg.jpg" class="img-fluid img-container" alt="About">
+        <div class="page-title right p-lg-3 px-sm-3 py-sm-2 px-2 pt-1 rounded-left">
+            <h4 class="text-white mb-lg-2 mb-sm-0">Laporan PPH</h4>
+            <!-- <p class="mb-lg-0 mb-sm-2 d-lg-inline-block d-sm-none d-none">Lorem ipsum dolor sit amet, rutrum
+                        lectus non libero molestie pellentesque</p> -->
+        </div>
+    </div>
+    <!-- Page Heading End -->
+
+    <!-- Content -->
+    <div class="impx-content p-lg-4 m-lg-2 p-3 m-2" ng-init="getChart()">
+        <div class="impx-pricing-features" style="margin-bottom:30px;">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10 mb-lg-4 mb-4">
+                    <!-- Intro -->
+                    <h3 class="mb-lg-2 mt-lg-2">Daftar Laporan PPH {{user.nama}} <br>Tahun {{params.tahun}} <br>Status <span style="text-transform: capitalize">{{params.status}}</span></h3>
+                </div><!-- Intro End -->
+            </div>
+        </div>
+        <button class="btn btn-success mb-3 hover-pointer" ng-click="toPdf(params)"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;Download
+            PDF</button>
+        <div class="impx-cta bg-light pattern-minimalist-4 p-lg-4 rounded-lg shadow-sm border-xlight p-3"
+            style="margin-bottom: 20px;text-align: center">
+            <h3 class="pb-lg-2 pb-2 mb-lg-4 mb-3 underline">Ketersediaan Energi, Protein dan Lemak tahun {{params.tahun}}
+            </h3>
+            <div class="row">
+                <div class="col-sm-12 col-md-4" style="margin-bottom:20px;">
+                    <div id="EnergiChart" style="width:100%;height:370px;"></div>
+                </div>
+                <div class="col-sm-12 col-md-4" style="margin-bottom:20px;">
+                    <div id="ProteinChart" style="width:100%;height:370px;">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4" style="margin-bottom:20px;">
+                    <div id="LemakChart" style="width:100%;height:370px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="impx-cta bg-light pattern-minimalist-4 p-lg-4 rounded-lg shadow-sm border-xlight p-3"
+            style="margin-bottom: 20px;text-align: center">
+            <h3 class="pb-lg-2 pb-2 mb-lg-4 mb-3 underline">Ketersediaan Energi, Protein dan Lemak tahun
+                {{params.tahun}} berdasarkan
+                kelompok sumber bahan makanan</h3>
+            <div class="row">
+                <div class="col-sm-12 col-md-4" style="margin-bottom:20px;">
+                    <div id="KomoditasEnergiChart" style="width:100%;height:800px;"></div>
+                </div>
+                <div class="col-sm-12 col-md-4" style="margin-bottom:20px;">
+                    <div id="KomoditasProteinChart" style="width:100%;height:800px;">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4" style="margin-bottom:20px;">
+                    <div id="KomoditasLemakChart" style="width:100%;height:800px;"></div>
+                </div>
+            </div>
+        </div>
+        <style>
+            #legenddiv {
+                width: 100%;
+                height: 200px;
+                border: 1px dotted #c99;
+                margin: 1em 0;
+                height: 150px;
+
+            }
+        </style>
+        <div class="impx-cta bg-light pattern-minimalist-4 p-lg-4 rounded-lg shadow-sm border-xlight p-3"
+            style="margin-bottom: 20px;text-align: center">
+            <h3 class="pb-lg-2 pb-2 mb-lg-4 mb-3 underline">Grafik Historikal Tahun dan Status</h3>
+            <div class="row">
+                <div class="col-sm-12 col-md-4" style="margin-bottom:20px;">
+                    <div id="EnergiLineChart" style="width:100%;height:500px;"></div>
+                </div>
+                <div class="col-sm-12 col-md-4" style="margin-bottom:20px;">
+                    <div id="ProteinLineChart" style="width:100%;height:500px;">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4" style="margin-bottom:20px;">
+                    <div id="LemakLineChart" style="width:100%;height:500px;"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Content End -->

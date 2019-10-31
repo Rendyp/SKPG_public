@@ -1,0 +1,66 @@
+    <!-- Page Heading -->
+    <div class="impx-page-heading position-relative">
+        <img src="images/laporan-nbm-bg.jpg" class="img-fluid img-container" alt="About">
+        <div class="page-title right p-lg-3 px-sm-3 py-sm-2 px-2 pt-1 rounded-left">
+            <h4 class="text-white mb-lg-2 mb-sm-0">Laporan NBM</h4>
+            <!-- <p class="mb-lg-0 mb-sm-2 d-lg-inline-block d-sm-none d-none">Lorem ipsum dolor sit amet, rutrum
+                        lectus non libero molestie pellentesque</p> -->
+        </div>
+    </div>
+    <!-- Page Heading End -->
+
+    <!-- Content -->
+    <div class="impx-content p-lg-4 m-lg-2 p-3 m-2">
+        <div class="impx-pricing-features" style="margin-bottom:30px;">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10 mb-lg-4 mb-4">
+                    <!-- Intro -->
+                    <h3 class="mb-lg-2 mt-lg-2">Daftar Laporan NBM Seluruh Indonesia</h3>
+                       <p>Laporan Neraca Bahan Makanan (NBM) Kabupaten/Kota, Provinsi dan Nasional.</p>
+                </div><!-- Intro End -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-4 offset-md-8 input-group mb-3">
+                <input type="text" ng-model="key" class="form-control" placeholder="Searching...." aria-label="Searching"
+                    aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-striped table-bordered" ng-init="getLaporan()">
+                <thead>
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Nama Daerah</th>
+                        <th scope="col">Tahun</th>
+                        <th scope="col">Status Laporan</th>
+                    </tr>
+                </thead>
+                <tbody ng-show="!isLoading">
+                    <tr ng-repeat="s in (results = laporan.nbm | filter:key)">
+                        <th scope="row">{{$index+1}}</th>
+                        <td><span style="color:green;cursor:pointer;" ng-click="toDetail(s,'nbm')">Data Laporan</span></td>
+                        <td>{{s.nama_user}}</td>
+                        <td>{{s.tahun}}</td>
+                        <td style="text-transform: capitalize">{{s.status}}</td>
+                    </tr>
+                    <tr ng-if="results.length == 0">
+                        <td colspan="5" style="text-align: center;">Data not found</td>
+                    </tr>
+                </tbody>
+                <tbody ng-show="isLoading">
+                    <tr>
+                        <td colspan="5">
+                            <div class="loading-indicator"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <!-- Content End -->

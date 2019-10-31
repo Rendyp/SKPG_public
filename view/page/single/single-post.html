@@ -1,0 +1,139 @@
+<!-- Page Heading -->
+<div class="impx-page-heading position-relative">
+    <img src="images/informasi.jpg" class="img-fluid img-container" alt="About">
+    <div class="page-title p-lg-3 px-sm-3 py-sm-2 px-2 pt-1 rounded-right">
+        <h4 class="text-white mb-lg-2 mb-sm-0">Informasi</h4>
+        <!-- <p class="mb-lg-0 mb-sm-2 d-lg-inline-block d-sm-none d-none">Informasi dan berita terkini seputar
+                        NBM</p> -->
+    </div>
+</div>
+<!-- Page Heading End -->
+
+<!-- Content -->
+<div class="impx-content p-lg-4 m-lg-2 p-3 m-2">
+    <div class="row">
+
+        <!-- Content Main -->
+        <div class="col-lg-12-5">
+
+            <article class="impx-article mb-lg-3">
+                <h4 class="article-title">{{form.Title}}</h4>
+                <p class="article-meta py-1">Ditulis oleh <a href="#">Admin</a> pada {{form.CreatedDate}}.</p>
+                <div style="text-align: center">
+                    <img src="{{ 'http://153.92.4.174/nbm/assets/information/'+ form.Image}}" alt=""
+                        class="img-fluid boxed-img img-thumbnail p-lg-2 mt-lg-1 mb-lg-3  mb-sm-3 mb-2"
+                        style="max-width:600px !important">
+                </div>
+                <div ta-bind ng-model="form.Content" style="padding:35px"> </div>
+            </article>
+
+            <!-- Author -->
+            <!-- <div class="impx-author-box p-lg-3 p-3 rounded-lg mb-lg-5 mb-4">
+                <div class="media">
+                    <img src="images/avatar.png" class="mr-3" alt="author" width="64" height="64">
+                    <div class="media-body">
+                        <h6 class="mt-lg-0 mb-lg-1">Tentang Penulis</h6>
+                        Salah satu admin di yang mempunyai hobi bermain futsal dan menjaga alam :D
+                    </div>
+                </div>
+            </div> -->
+            <!-- Author End -->
+
+            <!-- Related Posts -->
+            <div class="impx-related-posts rounded-lg mb-lg-5 mb-4">
+                <h5 class="pb-lg-2 pb-2 mb-lg-4 mb-3 underline">Informasi Terbaru</h5>
+                <div class="row">
+                    <div class="col-lg col-sm-6 mb-lg-0 mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-lg-3">
+                                <img src="{{ 'http://153.92.4.174/nbm/assets/information/'+ newpost[0].Image}}" alt=""
+                                    class="img-fluid boxed-img img-thumbnail p-lg-2 p-2 mb-lg-0 mb-3">
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="related-content ml-lg-3">
+                                    <h6><a ui-sref="app.blogDetail({id:newpost[0].Id})"> {{newpost[0].Summary}}</a></h6>
+                                    <span class="news-meta">Diterbitkan {{newpost[0].CreatedDate}} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg col-sm-6 mb-lg-0 mb-3" ng-if="newpost[1] !== undefined">
+                        <div class="row no-gutters">
+                            <div class="col-lg-3">
+                                <img src="{{ 'http://153.92.4.174/nbm/assets/information/'+ newpost[1].Image}}" alt=""
+                                    class="img-fluid boxed-img img-thumbnail p-lg-2 p-2 mb-lg-0 mb-3">
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="related-content ml-lg-3">
+                                    <h6><a ui-sref="app.blogDetail({id:newpost[1].Id})"> {{newpost[1].Title}}</a></h6>
+                                    <span class="news-meta">Diterbitkan {{newpost[1].CreatedDate}} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Related Posts End -->
+
+            <!-- Comments -->
+            <div class="impx-article-comments">
+                <!-- Comments List -->
+                <div class="impx-comments-list">
+                    <h5 class="pb-lg-2 pb-sm-2 mb-lg-4 mb-sm-4 underline">Komentar</h5>
+                    <div class="media mb-lg-5" ng-if="comments.length == 0">
+                        <div class="media-body">
+                            <h6 class="mt-0">Belum ada komentar</h6>
+
+                        </div>
+                    </div>
+                    <div class="media mb-lg-5" ng-repeat="c in comments">
+                        <img src="images/avatar.png" class="mr-3" alt="author" width="64" height="64">
+                        <div class="media-body">
+                            <h6 class="mt-0">{{c.Name}}</h6>
+                            {{c.Message}}
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Comments List End -->
+
+                <!-- Comments Form -->
+                <div class="impx-comments-form mb-lg-3 mb-4">
+                    <h5 class="pb-lg-2 pb-sm-2 mb-lg-4 mb-sm-4 underline">Leave a comment</h5>
+                    <form ng-submit="createComments()">
+                        <div class="row">
+                            <div class="col-lg-6  mb-3">
+                                <label for="name">Nama</label>
+                                <input type="text" class="form-control mb-lg-3 mb-3" ng-model="comment2.Name" required
+                                    id="name" placeholder="">
+
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control mb-lg-3 mb-3" ng-model="comment2.Email" required
+                                    id="email" placeholder="">
+
+                                <label for="website">Website</label>
+                                <input type="text" class="form-control" id="website" ng-model="comment2.Website"
+                                    placeholder="">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="message">Pesan</label>
+                                <textarea class="form-control mb-lg-0 mb-3" id="message" ng-model="comment2.Message"
+                                    required rows="6"></textarea>
+                                <button type="submit" class="btn btn-secondary btn-sm mt-lg-3">Kirim</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comments Form End -->
+            </div>
+            <!-- Comments End -->
+
+        </div>
+        <!-- Content Main End -->
+
+        <!-- Sidebar -->
+        <!-- Sidebar End -->
+
+    </div>
+</div>
+<!-- Content End -->

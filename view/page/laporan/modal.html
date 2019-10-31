@@ -1,0 +1,88 @@
+<div id="preloaderHome" ng-if="isLoading">
+    <img src="images/spinner.gif" />
+    <!-- sasasa -->
+</div>
+<div class="modal-content modal-delete">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pemantauan Data {{current_laporan.nama_user}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Close" ng-click="$close();">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Tahun</label>
+                <div class="col-sm-10">
+                    <select class="form-control" ng-model="current_laporan.tahun" ng-change="changeYear()"
+                        ng-disabled="isLoading">
+                        <option value="" selected hidden>Pilih Tahun</option>
+                        <option value="{{x}}" ng-repeat="x in listYear">{{x}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Jenis Laporan</label>
+                <div class="col-sm-10">
+                    <select class="form-control" ng-model="current_laporan.jenis_laporan"
+                        ng-change="getDataDetail(current_laporan.id_prov, current_laporan.id_kab, current_laporan.tahun )"
+                        ng-disabled="isLoading || !current_laporan.tahun ">
+                        <option value="" selected hidden>Pilih Jenis Laporan</option>
+                        <option value="Ketersediaan">Ketersediaan</option>
+                        <option value="Akses">Akses</option>
+                        <option value="Pemanfaatan">Pemanfaatan</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <hr>
+
+        <div>
+
+            <div class="impx-cta bg-light pattern-minimalist-4 p-lg-4 rounded-lg shadow-sm border-xlight p-3"
+                ng-if="dataResult.length !== 0 && current_laporan.jenis_laporan && current_laporan.tahun"
+                style="margin-bottom: 20px;text-align: center">
+                <h5 class="pb-lg-2 pb-2 mb-lg-4 mb-3 underline">Stok {{current_laporan.jenis_laporan}}
+                </h5>
+                <div class="row">
+
+                    <canvas id="barKetersediaan" class="chart chart-bar" data="dataIndex" labels="labels"
+                        series="series" click="onClick" chart-colors="colours" style="height: 350px">
+                    </canvas>
+                </div>
+            </div>
+            <div class="impx-cta bg-light pattern-minimalist-4 p-lg-4 rounded-lg shadow-sm border-xlight p-3"
+                style="margin-bottom: 20px;text-align: center"
+                ng-if="dataResult.length !== 0 && current_laporan.jenis_laporan && current_laporan.tahun">
+                <h5 class="pb-lg-2 pb-2 mb-lg-4 mb-3 underline">Luas Tanam Padi/Luas Tanaman Padi Rata-rata (dalam
+                    hektar)
+                </h5>
+                <div class="row">
+                    <canvas id="barLuasTanam" class="chart chart-bar" data="dataDummy" labels="labels" legend="true"
+                        series="legendLuasTanam" click="onClick" chart-colors="colours" style="height: 350px">
+                    </canvas>
+                </div>
+            </div>
+            <div class="impx-cta bg-light pattern-minimalist-4 p-lg-4 rounded-lg shadow-sm border-xlight p-3"
+                style="margin-bottom: 20px;text-align: center"
+                ng-if="dataResult.length !== 0 && current_laporan.jenis_laporan && current_laporan.tahun">
+                <h5 class="pb-lg-2 pb-2 mb-lg-4 mb-3 underline">Luas Puso Padi/Luas Puso Padi Rata-rata
+                </h5>
+                <div class="row">
+
+                    <canvas id="barLuasTanam" class="chart chart-bar" data="dataDummy" labels="labels" legend="true"
+                        series="legendLuasPuso" click="onClick" chart-colors="colours" style="height: 350px">
+                    </canvas>
+                </div>
+            </div>
+
+            <div class="impx-cta bg-light pattern-minimalist-4 p-lg-4 rounded-lg shadow-sm border-xlight p-3"
+                style="margin-bottom: 20px;text-align: center"
+                ng-if="dataResult.length == 0 && current_laporan.jenis_laporan && current_laporan.tahun">
+                <h5 class="pb-lg-2 pb-2 mb-lg-4 mb-3 underline">Data Tidak Tersedia
+                </h5>
+
+            </div>
+        </div>
+    </div>
+</div>
