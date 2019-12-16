@@ -1,0 +1,98 @@
+<div id="preloaderHome" ng-if="isLoading">
+    <img src="images/spinner.gif" />
+    <!-- sasasa -->
+</div>
+<div class="modal-content modal-delete">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Peta {{petaHeader}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Close" ng-click="$close();">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Tahun</label>
+                <div class="col-sm-10">
+
+                    <ui-select ng-model="peta.tahun" lass="form-control " style="background: white; " theme="bootstrap">
+                        <ui-select-match placeholder="Tahun">{{$select.selected}}</ui-select-match>
+                        <ui-select-choices repeat="list in listYear | filter: $select.search">
+                            <div ng-bind-html="list | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                    
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Bulan</label>
+                <div class="col-sm-10">
+                        <ui-select ng-model="peta.bulan" lass="form-control " style="background: white; " theme="bootstrap">
+                                <ui-select-match placeholder="Bulan">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="list in listBulan | filter: $select.search">
+                                    <div ng-bind-html="list.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Jenis Data</label>
+                <div class="col-sm-10">
+                    <ui-select ng-model="peta.jenisData" lass="form-control " style="background: white; " ng-change="peta.selectedProvinsi = undefined"
+                        theme="bootstrap">
+                        <ui-select-match placeholder="Jenis Data">{{$select.selected}}</ui-select-match>
+                        <ui-select-choices repeat="list in jenisData | filter: $select.search">
+                            <div ng-bind-html="list | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="form-group row" ng-if="peta.jenisData == 'provinsi' || peta.jenisData == 'kabupaten' ">
+                <label class="col-sm-2 col-form-label">Provinsi</label>
+                <div class="col-sm-10">
+                    <ui-select ng-model="peta.selectedProvinsi" lass="form-control " style="background: white; "
+                        theme="bootstrap" ng-change="getKabupaten(peta.selectedProvinsi)">
+                        <ui-select-match placeholder="Provinsi">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="list in provinsi | filter: $select.search">
+                            <div ng-bind-html="list.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <!-- <div class="form-group row" ng-if="peta.jenisData == 'kabupaten'">
+                <label class="col-sm-2 col-form-label">Kabupaten</label>
+                <div class="col-sm-10">
+                    <ui-select ng-model="peta.selectedKabupaten" lass="form-control " style="background: white; "
+                        theme="bootstrap">
+                        <ui-select-match placeholder="Kabupaten">{{$select.selected.nama}}</ui-select-match>
+                        <ui-select-choices repeat="list in kabupaten | filter: $select.search">
+                            <div ng-bind-html="list.nama | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div> -->
+
+
+            <div style="width:100%;text-align:right">
+                <button ng-click="getDataPeta()" type="button" class="button-download">Cari</button>
+            </div>
+
+        </form>
+        <hr>
+
+        <div id="mapPopup" style="height: 300px" ></div>
+
+
+
+        <div id="download-graph">
+
+            <div class="impx-cta bg-light pattern-minimalist-4 p-lg-4 rounded-lg shadow-sm border-xlight p-3"
+                style="margin-bottom: 20px;text-align: center"
+                ng-if="dataResultPeta.length == 0">
+                <h5 class="pb-lg-2 pb-2 mb-lg-4 mb-3 underline">Data Tidak Tersedia
+                </h5>
+
+            </div>
+        </div>
+    </div>
+</div>

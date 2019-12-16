@@ -1,7 +1,7 @@
 app.service("config", function($location, $localStorage, $state) {
     this.url = "http://153.92.4.174/nbm/api/";
     this.api = "http://jhimaster.com/nbm/api/";
-    this.apiSKPG = "http://pi-dev.co.id/skpg/api/";
+    this.apiSKPG = "http://spipbkp.id/skpg/skpg_app/api/";
     this.assetReport = this.url + "reports/";
     this.assetMember = this.url + "members/profile/";
     this.new = "http://localhost:3000/api/";

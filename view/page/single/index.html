@@ -1,46 +1,112 @@
-
-<header class="impx-header p-lg-4 p-3">
+<header class="tg-header p-lg-4 p-3">
     <div class="row">
-        <div class="col-lg-2 col-6">
-            <a ui-sref="app.index"><img src="images/skpg.png" style="    width: 216px; margin-top: -76px;" alt="Logo" /></a>
-            <span></span>
+        <div class="col-lg-6 col-12 mobile-view-image">
+            <img src="images/skpg.png" class="logo-style" alt="Logo" />
+
         </div>
-        <div class=" col-lg-8 col-12 " style="margin-top:10px">
-            
+
+
+
+        <div class="col-lg-6 col-12 button-header-container">
+            <!-- <button class="nav-link btn btn-outline-secondary border button-header " ng-click="popupModal()">
+                Tentang SKPG</button> -->
+
+            <div class="dropdowns btn-header-margin-left">
+                <button class="nav-link btn btn-outline-secondary border button-header " ng-click="showDropdown()">
+                    Peta</button>
+                <div id="myDropdown" class="dropdown-content" ng-show="isShowDropdown">
+                    <div class="dropdown-choice" ng-click="showPeta('Ketersediaan')">Ketersediaan</div>
+                    <div class="dropdown-choice" ng-click="showPeta('Akses')">Akses</div>
+                    <div class="dropdown-choice" ng-click="showPeta('Pemanfaatan')">Pemanfaatan</div>
+                    <div class="dropdown-choice" ng-click="showPeta('Komposit')">Komposit</div>
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+        <!-- <div class=" col-lg-1 col-0"></div> -->
+        <div class=" col-lg-12 col-12" style="margin-top:10px; z-index: 1057000">
+            <!-- <div class=" col-lg-1 col-0"></div> -->
+
+            <div class="input-group" style="display: flex">
+                <!-- <input class="form-control py-2 border-right-0 border" ng-model="country.nama"
+                    ng-keyup="complete(country.nama)" type="text" placeholder="Search" id="example-search-input"/> -->
+                <div style="margin-bottom: 0;  width: calc(50% - 18.5px) !important ; display: inline-block;">
+                    <ui-select ng-model="dash.selectedProvinsi" lass="form-control " style="background: white; "
+                        theme="bootstrap" ng-change="getKabupaten(dash.selectedProvinsi)">
+                        <ui-select-match placeholder="Provinsi">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="list in provinsi | filter: $select.search">
+                            <div ng-bind-html="list.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div style="margin-bottom: 0;  width: calc(50% - 18.5px) !important ; display: inline-block;">
+                    <ui-select ng-model="dash.selectedKabupaten" lass="form-control " style="background: white; "
+                        theme="bootstrap" ng-change="getKecamatan(dash.selectedKabupaten)">
+                        <ui-select-match placeholder="Kabupaten">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="list in kabupaten | filter: $select.search">
+                            <div ng-bind-html="list.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <!-- <div style="margin-bottom: 0;  width: calc(33.3% - 12.3px) !important ; display: inline-block;">
+                    <ui-select ng-model="dash.selectedKecamatan" lass="form-control " style="background: white; "
+                        theme="bootstrap">
+                        <ui-select-match placeholder="Kecamatan">{{$select.selected.nama}}</ui-select-match>
+                        <ui-select-choices repeat="list in kecamatan | filter: $select.search">
+                            <div ng-bind-html="list.nama | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div> -->
+
+
+                <span class="input-group-append" style="display: inline-block">
+                    <button ng-if="filterCountry==null" style="background:#669100;" ng-click="searchBox()"
+                        class="btn btn-outline-secondary border-left-0 border" type="button">
+                        <i class="fa fa-search" style="color:white"></i>
+                    </button>
+
+                </span>
+            </div>
+
+        </div>
+        <!-- <div class=" col-lg-8 col-12 show-mobile" style="margin-top:10px">
+
             <div class="input-group">
                 <input class="form-control py-2 border-right-0 border" ng-model="country.nama"
-                    ng-keyup="complete(country.nama)"
-                    type="text" placeholder="Search" id="example-search-input">
+                    ng-keyup="complete(country.nama)" type="text" placeholder="Search" id="example-search-input">
                 <span class="input-group-append">
                     <button ng-if="filterCountry==null" style="background:#dad9d7;cursor:default"
                         class="btn btn-outline-secondary border-left-0 border" type="button">
                         <i class="fa fa-search" style="color:white"></i>
                     </button>
-                     <button ng-if="filterCountry!=null" ng-click="closeSearch()"
-                         class="btn btn-outline-secondary border-left-0 border" type="button">
-                         <i class="fa fa-close" style="color:white"></i>
-                     </button>
+                    <button ng-if="filterCountry!=null" ng-click="closeSearch()"
+                        class="btn btn-outline-secondary border-left-0 border" type="button">
+                        <i class="fa fa-close" style="color:white"></i>
+                    </button>
                 </span>
             </div>
             <ul class="list-group dropdown-autocomplete" ng-class="{'dropdown-autocomplete-hide':filterCountry==null}">
-                <li class="list-group-item" style="cursor: pointer; color:black" ng-repeat="countrydata in filterCountry | orderBy:'nama'" ng-click="searchBox(countrydata)">
+                <li class="list-group-item" style="cursor: pointer; color:black"
+                    ng-repeat="countrydata in filterCountry | orderBy:'nama'" ng-click="searchBox(countrydata)">
                     {{countrydata.nama}}</li>
             </ul>
-            <ul class="list-group dropdown-autocomplete" style="padding:0 53px 0 20px!important;color:black" ng-if="showNoResult">
+            <ul class="list-group dropdown-autocomplete" style="padding:0 53px 0 20px!important;color:black"
+                ng-if="showNoResult">
                 <li class="list-group-item">Data No Found</li>
             </ul>
-        </div>
-        <div class="col-lg-2 col-6" style="z-index:9999; margin-top: 5px">
-            <button class="nav-link btn btn-outline-secondary border"
-            style="color:white;float:right "
-            href="/"> Login</button>
-            
-        </div>
+        </div> -->
     </div>
 </header>
 
 <!-- Fun Facts End -->
 <!-- Slideshow -->
+
+
+
 <div id="slider1" class="impx-slider">
     <div id="mapid">
         <div id="preloader" ng-if="loadingMap">
@@ -55,17 +121,31 @@
         <div class="btn-map-atas">
 
             <button ng-click="getData('provinsi')" title="Data Provinsi"
-                class="btn  btn-outline-secondary border-left-0 border" ng-class="{ 'btn-data-not-active': !isDataProvinsi, 'btn-data' : isDataProvinsi }" type="button">
+                class="btn  btn-outline-secondary border-left-0 border"
+                ng-class="{ 'btn-data-not-active': !isDataProvinsi, 'btn-data' : isDataProvinsi }" type="button">
                 Data Provinsi
             </button>
-            <button ng-click="getData('kabupaten')" title="Data Provinsi" 
-                class="btn btn-outline-secondary border-left-0 border" ng-class="{ 'btn-data-not-active': !isDataKabupaten, 'btn-data' : isDataKabupaten }" type="button">
+            <button ng-click="getData('kabupaten')" title="Data Provinsi"
+                class="btn btn-outline-secondary border-left-0 border"
+                ng-class="{ 'btn-data-not-active': !isDataKabupaten, 'btn-data' : isDataKabupaten }" type="button">
                 Data Kabupaten
             </button>
             <!-- <button ng-click="getData('kecamatan')" title="Kecamatan"
               class="btn btn-data-nasional btn-outline-secondary border-left-0 border" type="button">
               Data Kecamatan
           </button> -->
+        </div>
+    </div>
+</div>
+
+
+<div class="tg-footerbar">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+
+                <span class="tg-copyright"> Copyright ©2019 Kementerian Pertanian RI. All rights reserved</span>
+            </div>
         </div>
     </div>
 </div>

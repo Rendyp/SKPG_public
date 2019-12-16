@@ -4,7 +4,7 @@
 </div>
 <div class="modal-content modal-delete">
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Pemantauan Data {{current_laporan.nama_user}}</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Pemantauan Data</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Close" ng-click="$close();">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -14,44 +14,121 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Tahun</label>
                 <div class="col-sm-10">
-                    <select class="form-control" ng-model="current_laporan.tahun" ng-change="changeYear()"
+                    <select class="form-control" ng-model="current_laporan.tahun"
+                        ng-change="getDataDetail(current_laporan.id_prov, current_laporan.id_kab, current_laporan.id_kec,  current_laporan.tahun )"
                         ng-disabled="isLoading">
                         <option value="" selected hidden>Pilih Tahun</option>
                         <option value="{{x}}" ng-repeat="x in listYear">{{x}}</option>
+                        <!-- <option value="2019" ng-repeat="x in listYear">11</option> -->
                     </select>
                 </div>
             </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Jenis Laporan</label>
+            <!-- <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Jenis Indikator</label>
                 <div class="col-sm-10">
                     <select class="form-control" ng-model="current_laporan.jenis_laporan"
-                        ng-change="getDataDetail(current_laporan.id_prov, current_laporan.id_kab, current_laporan.tahun )"
+                        ng-change="getDataDetail(current_laporan.id_prov, current_laporan.id_kab, current_laporan.id_kec,  current_laporan.tahun )"
                         ng-disabled="isLoading || !current_laporan.tahun ">
                         <option value="" selected hidden>Pilih Jenis Laporan</option>
                         <option value="Ketersediaan">Ketersediaan</option>
                         <option value="Akses">Akses</option>
                         <option value="Pemanfaatan">Pemanfaatan</option>
+                        <option value="Komposit">Komposit</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
         </form>
         <hr>
 
-        <div>
+        <div style="width:100%;text-align:right">
+            <button ng-click="downloadChart(this)" ng-if="showLaporan" class="button-download">download</button>
+        </div>
+
+        <div id="download-graph" ng-if="showLaporan">
 
             <div class="impx-cta bg-light pattern-minimalist-4 p-lg-4 rounded-lg shadow-sm border-xlight p-3"
-                ng-if="dataResult.length !== 0 && current_laporan.jenis_laporan && current_laporan.tahun"
-                style="margin-bottom: 20px;text-align: center">
-                <h5 class="pb-lg-2 pb-2 mb-lg-4 mb-3 underline">Stok {{current_laporan.jenis_laporan}}
+                style="margin-bottom: 20px;text-align: center; background:white !important">
+                <h5 class="pb-lg-2 pb-2 mb-lg-4 mb-3 underline">
+                    HASIL ANALISIS SKPG PROVINSI {{country.provinsiNama}} {{country.kabupatenNama}} TAHUN {{current_laporan.tahun}} 
                 </h5>
-                <div class="row">
 
-                    <canvas id="barKetersediaan" class="chart chart-bar" data="dataIndex" labels="labels"
-                        series="series" click="onClick" chart-colors="colours" style="height: 350px">
-                    </canvas>
+                <table class="table table-responsive" style="text-align: left">
+                    <thead>
+                        <tr>
+                            <th>ASPEK</th>
+                            <th>INDIKATOR</th>
+                            <th>Jan</th>
+                            <th>Feb</th>
+                            <th>Mar</th>
+                            <th>Apr</th>
+                            <th>Mei</th>
+                            <th>Jun</th>
+                            <th>Jul</th>
+                            <th>Agt</th>
+                            <th>Sept</th>
+                            <th>Okt</th>
+                            <th>Nov</th>
+                            <th>Des</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ketersediaan Pangan</td>
+                            <td>Luas Tanam</td>
+                            <td ng-repeat=" k in indeksKetersediaan track by $index"
+                                ng-class="{'greentable': k == '1', 'yellowtable': k=='2', 'redtable': k == '3'}"></td>
+                        </tr>
+                        <tr>
+                            <td>Akses Pangan</td>
+                            <td>Harga 8 Komoditas(Beras, Jagung, Ubi Kayu, Ubi Jalar, Gula Pasir, Minyak Goreng, Telor
+                                Ayam, Daging Ayam</td>
+                            <td ng-repeat=" k in indeksAkses track by $index"
+                                ng-class="{'greentable': k == '1', 'yellowtable': k=='2', 'redtable': k == '3'}"></td>
+                        </tr>
+                        <tr>
+                            <td>Permintaan Pangan</td>
+                            <td>Berat Badan Menurut Umut (BB/U)</td>
+                            <td ng-repeat=" k in indeksPemanfaatan track by $index"
+                                ng-class="{'greentable': k == '1', 'yellowtable': k=='2', 'redtable': k == '3'}"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Komposit</td>
+
+                            <td ng-repeat=" k in indeksKomposit track by $index"
+                                ng-class="{'greentable': k == '1', 'yellowtable': k=='2', 'redtable': k == '3'}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="text-align: left">
+                    Keterangan :
                 </div>
+                <div style="text-align: left">
+                    <div class="square greentable display-inlin">
+                        <div style="padding-left:40px">AMAN</div>
+                    </div>
+
+                </div>
+                <div style="text-align: left">
+                    <div class="square yellowtable display-inlin">
+                        <div style="padding-left:40px">WASPADA</div>
+                    </div>
+
+                </div>
+                <div style="text-align: left">
+                    <div class="square redtable display-inlin">
+                        <div style="padding-left:40px">RENTAN</div>
+                    </div>
+
+                </div>
+                <!-- <div class="row" style="height: 300px">
+
+                    <canvas id="chartKetersediaan" height="300"></canvas>
+
+                </div> -->
             </div>
-            <div class="impx-cta bg-light pattern-minimalist-4 p-lg-4 rounded-lg shadow-sm border-xlight p-3"
+
+
+            <!-- <div class="impx-cta bg-light pattern-minimalist-4 p-lg-4 rounded-lg shadow-sm border-xlight p-3"
                 style="margin-bottom: 20px;text-align: center"
                 ng-if="dataResult.length !== 0 && current_laporan.jenis_laporan && current_laporan.tahun">
                 <h5 class="pb-lg-2 pb-2 mb-lg-4 mb-3 underline">Luas Tanam Padi/Luas Tanaman Padi Rata-rata (dalam
@@ -74,8 +151,11 @@
                         series="legendLuasPuso" click="onClick" chart-colors="colours" style="height: 350px">
                     </canvas>
                 </div>
-            </div>
+            </div> -->
 
+
+        </div>
+        <div>
             <div class="impx-cta bg-light pattern-minimalist-4 p-lg-4 rounded-lg shadow-sm border-xlight p-3"
                 style="margin-bottom: 20px;text-align: center"
                 ng-if="dataResult.length == 0 && current_laporan.jenis_laporan && current_laporan.tahun">
